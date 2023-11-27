@@ -35,14 +35,22 @@ class MovieModel extends Movie {
   }
 
   factory MovieModel.fromMap(Map<String, dynamic> map) {
+
+    DateTime date;
+    try{
+      date = DateTime.parse(map['release_date']);
+    } catch (e) {
+      date = DateTime.now();
+    }
+
     return MovieModel(
       id: map['id'] as int,
       title: map['title'] as String,
       overview: map['overview'] as String,
       isAdult: map['adult'] as bool,
-      releaseDate: DateTime.parse(map['release_date'] as String),
-      posterPath: map['poster_path'] as String,
-      backdropPath: map['backdrop_path'] as String,
+      releaseDate: date,
+      posterPath: map['poster_path'] ?? "",
+      backdropPath: map['backdrop_path'] ?? "",
       popularity: map['popularity'] as double,
       voteAverage: map['vote_average'] as double,
       voteCount: map['vote_count'] as int,
