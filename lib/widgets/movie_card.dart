@@ -40,11 +40,17 @@ class MovieCard extends StatelessWidget {
               height: 100,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
-                image: DecorationImage(
+                image: 
+                  movie.backdropPath.isNotEmpty ? DecorationImage(
                   image: NetworkImage('https://image.tmdb.org/t/p/w500/${movie.backdropPath}'),
                   fit: BoxFit.cover
-                )
+                )  : null
               ),
+              child: movie.backdropPath.isEmpty ? Icon(
+                Icons.movie,
+                color: AppColors.white,
+                size: 50,
+              ) : null
             ),
           ),
           Expanded(
