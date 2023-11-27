@@ -32,4 +32,18 @@ class TMDB {
     return response.data['results'].map<PersonModel>((serie) => PersonModel.fromMap(serie)).toList();
   }
 
+  Future<List<MovieModel>> searchMoviesByText(String text) async {
+    final response = await _dio.get('/search/movie?query=$text');
+    return response.data['results'].map<MovieModel>((movie) => MovieModel.fromMap(movie)).toList();
+  }
+
+  Future<List<SerieModel>> searchSeriesByText(String text) async {
+    final response = await _dio.get('/search/tv?query=$text');
+    return response.data['results'].map<SerieModel>((serie) => SerieModel.fromMap(serie)).toList();
+  }
+
+  Future<List<PersonModel>> searchPeopleByText(String text) async {
+    final response = await _dio.get('/search/person?query=$text');
+    return response.data['results'].map<PersonModel>((serie) => PersonModel.fromMap(serie)).toList();
+  }
 }
