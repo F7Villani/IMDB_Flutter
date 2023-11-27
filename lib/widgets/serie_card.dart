@@ -71,7 +71,7 @@ class SerieCard extends StatelessWidget {
                         size: 15,),
                         const SizedBox(width: 5,),
                         Text(
-                          serie.voteAverage.toString(),
+                          serie.voteAverage.toStringAsFixed(1),
                           style: TextStyle(
                             color: AppColors.white,
                             fontSize: 15,
