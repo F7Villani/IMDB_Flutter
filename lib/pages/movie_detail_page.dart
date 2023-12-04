@@ -21,13 +21,12 @@ class MovieDetailPage extends StatelessWidget {
                     height: 250,
                     width: double.infinity,
                     decoration: BoxDecoration(
-                      image: DecorationImage(
-                        image: NetworkImage(
-                          'https://image.tmdb.org/t/p/w500/${movie.backdropPath}',
-                        ),
-                        fit: BoxFit.cover,
-                      ),
-                    ),
+                        image: movie.backdropPath.isNotEmpty
+                            ? DecorationImage(
+                                image: NetworkImage(
+                                    'https://image.tmdb.org/t/p/w500/${movie.backdropPath}'),
+                                fit: BoxFit.cover)
+                            : null),
                   ),
                   Container(
                     height: 250,
@@ -36,7 +35,10 @@ class MovieDetailPage extends StatelessWidget {
                       gradient: LinearGradient(
                         begin: Alignment.topCenter,
                         end: Alignment.bottomCenter,
-                        colors: [Colors.black.withOpacity(0.8), Colors.transparent],
+                        colors: [
+                          Colors.black.withOpacity(0.8),
+                          Colors.transparent
+                        ],
                       ),
                     ),
                   ),

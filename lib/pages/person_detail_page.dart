@@ -22,13 +22,12 @@ class PersonDetailPage extends StatelessWidget {
                     height: 400,
                     width: double.infinity,
                     decoration: BoxDecoration(
-                      image: DecorationImage(
-                        image: NetworkImage(
-                          'https://image.tmdb.org/t/p/w500/${person.profilePath ?? ''}',
-                        ),
-                        fit: BoxFit.cover,
-                        alignment: Alignment.topCenter,
-                      ),
+                      image: person.profilePath != null ? 
+                  DecorationImage(
+                    image: NetworkImage('https://image.tmdb.org/t/p/w500/${person.profilePath}'),
+                    fit: BoxFit.cover,
+                    alignment: Alignment.topCenter
+                  ) : null
                     ),
                   ),
                   Container(
